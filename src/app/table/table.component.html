@@ -1,0 +1,65 @@
+<div class="view-container">
+    <span class="view-container__title">Primary View</span>
+    <span class="view-container__divider">&nbsp; | &nbsp;</span>
+    <select class="view-container__type" (change)="updateTable($event)">
+        <option value="location">Location</option>
+        <option value="branch">Branch</option>
+    </select>
+</div>
+<br>
+<div class="view-container-table">
+    <table>
+        <tr class="header-row">
+            <td *ngFor="let type of colType ;let i=index">
+                <span class="title">{{type.title}}</span>
+                <i class="sort-icon fas fa-arrow-up" (click)="sort('desc', i)"></i>
+                <i class="sort-icon fas fa-arrow-down" (click)="sort('asc', i)"></i>
+            </td>
+            <td>Action</td>
+        </tr>
+        <tr class="total-row">
+            <td *ngFor="let type of colType ;let i=index">
+                <ng-template [ngIf]="totalData.length > 0">
+                    <div [ngSwitch]="type.type">
+                        <span *ngSwitchCase="'curr'">${{totalData[i] | customNumber}} </span>
+                        <span *ngSwitchCase="'pct'"> {{totalData[i].toFixed()}}% </span>
+                        <span *ngSwitchCase="'num'"> {{totalData[i] | number}} </span>
+                        <span *ngSwitchDefault> {{ totalData[i] }} </span>
+                        <span class="pct" *ngIf="type.showPct">(100%)</span>
+                    </div>
+
+                </ng-template>
+                <ng-template [ngIf]="totalData.length === 0">
+                    <div>N/A</div>
+                </ng-template>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr *ngFor="let row of tableData;let r=index">
+            <td *ngFor="let type of colType ;let i=index">
+                <div [ngSwitch]="type.type">
+                    <span *ngSwitchCase="'curr'"> ${{row[i] | number}} </span>
+                    <span *ngSwitchCase="'pct'"> {{row[i].toFixed(2)}}% </span>
+                    <span *ngSwitchCase="'num'"> {{row[i] | number}} </span>
+                    <span *ngSwitchCase="'link'">
+                        <a class="branch-link" *ngIf="view === 'location'" (click)="loadBranch(r)">{{row[i]}}</a>
+                        <span *ngIf="view !== 'location'">{{row[i]}}</span>
+                    </span>
+                    <span *ngSwitchDefault> {{ row[i] }} </span>
+                    <span class="pct" *ngIf="type.showPct">
+                        ({{ (row[i]/totalData[i]) | percent : "2.0-2"}})
+                    </span>
+                </div>
+            </td>
+            <td class="delete-row"><i (click)="deleteRow(r)" class="far fa-times-circle"></i></td>
+        </tr>
+    </table>
+    <div class="pagination">
+        <span class="page-entry">Showing {{entryIndex + 1}} of {{locationData.length}} entries</span>
+        <span class="page-nav">
+            <i (click)="showEntry(entryIndex - 1)" class="fas fa-chevron-circle-left"></i>
+            <input type="text" pattern="/\d/g" name="entry" value="{{entryIndex + 1}}" />
+            <i (click)="showEntry(entryIndex + 1)" class="fas fa-chevron-circle-right"></i>
+        </span>
+    </div>
+</div>

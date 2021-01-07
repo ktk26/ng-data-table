@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('ng-rrd-task app is running!');
+    expect(page.getTitleText()).toEqual('ng-data-table app is running!');
   });
 
   afterEach(async () => {

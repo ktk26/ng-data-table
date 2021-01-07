@@ -1,0 +1,137 @@
+.view-container {
+  .view-container__title {
+    color: rgb(18, 197, 18);
+    font-size: 22px;
+
+    &::after {
+      content: '|';
+      font-size: 30px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  .view-container__divider {
+    font-size: 22px;
+  }
+
+  .view-container__type {
+    width: 85px;
+    height: 40px;
+    border: none;
+    font-size: 14px;
+  }
+}
+
+.view-container-table {
+  width: 60vw;
+
+  table {
+    border: 1px solid rgb(190, 184, 184);
+    border-collapse: collapse;
+  }
+
+  tr {
+
+    td {
+      position: relative;
+      text-align: right;
+      border: 1px solid rgb(190, 184, 184);
+      padding: 10px 5px;
+    }
+
+    td:first-child {
+      text-align: left;
+    }
+
+    td.delete-row {
+      text-align: center;
+    }
+
+  }
+
+  tr.header-row {
+    font-size: 16px;
+    background: rgb(243, 231, 231);
+
+    td {
+
+      text-align: left;
+      border-bottom: none;
+      padding: 0 20px 20px 5px;
+    }
+  }
+
+  tr.total-row {
+
+    text-align: right;
+    font-size: 20px;
+    background: rgb(243, 231, 231);
+
+    td {
+
+      border-top: none;
+    }
+  }
+
+  tr:nth-child(n+2) {
+    td:first-child {
+      color: rgb(18, 197, 18);
+    }
+  }
+
+  .pct {
+    font-size: 16px;
+    color: rgb(190, 184, 184);
+  }
+
+  .sort-icon {
+    cursor: pointer;
+    font-size: 10px;
+    position: absolute;
+    right: 5px;
+
+    &.fa-arrow-up {
+      top: 20%;
+    }
+
+    &.fa-arrow-down {
+      top: 35%;
+    }
+
+  }
+
+  .fa-times-circle {
+    cursor: pointer;
+    color: rgb(190, 184, 184);
+  }
+
+  .branch-link {
+    cursor: pointer;
+  }
+
+  .pagination {
+    margin-top: 10px;
+
+    .page-nav {
+      float: right;
+
+      input {
+        max-width: 30px;
+        text-align: center;
+        border: none;
+        border-bottom: 1px solid;
+        padding-bottom: 3px;
+        font-size: 16px;
+        color: #12c512;
+        font-weight: bold;
+      }
+
+      i.fas {
+        cursor: pointer;
+      }
+    }
+
+  }
+}
