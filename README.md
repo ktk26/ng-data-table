@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Table Requirements
 
-Table Example: table-example.png
+[Table Example](https://github.com/ktk26/ng-data-table/blob/main/table-example.png)
 
 1. It will be a dropdown and it shows one more value named as Branch. Table datas has to be changed based on the dropdown selection.
 2. The total row value is calculated dynamically from the below rows and the total values should be formatted($x.xxM, $x.xxK) as per references provided.
